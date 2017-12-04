@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 })
 export class ListComponent implements OnInit {
 
-    displayedColumns = ['id', 'name'];
+    displayedColumns = ['image', 'id', 'name', 'location'];
     dataSource = new UserDataSource(this.customerService);
     path = window.location.pathname;
 
@@ -24,7 +24,7 @@ export class ListComponent implements OnInit {
     }
 
     rowClick(row) {
-        this._router.navigateByUrl(this.path + "/" + row.id);
+        this._router.navigateByUrl(this.path + '/' + row.id);
     }
 }
 

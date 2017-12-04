@@ -1,39 +1,57 @@
-<mat-card>
+<div class="profile">
+    <mat-card>
+        <div class="profile-header">
+            <div class="profile-image">
+                <img class="table-image" src="{{customer.profile_picture}}">
+            </div>
+            <div class="profile-info">
+                <p>{{customer.full_name}}</p>
+                <p>{{customer.email}}</p>
+                <p>{{customer.short_me}}</p>
+                <p>{{customer.location}}</p>
+            </div>
+        </div>
+    </mat-card>
+    <mat-card>
+        <form (ngSubmit)="onSubmit()" #commentForm="ngForm" class="example-container">
 
+            <div class="upper-form">
+                <mat-form-field>
+                    <input matInput placeholder="Name" name="name" [(ngModel)]="comment.user"
+                           #name="ngModel">
+                </mat-form-field>
 
-    <form (ngSubmit)="onSubmit()" #commentForm="ngForm" class="example-container">
-
-        <mat-form-field>
-            <input matInput placeholder="Name" name="name" [(ngModel)]="comment.user"
-                   #name="ngModel">
-
-        </mat-form-field>
-
-        <mat-form-field>
-            <input matInput placeholder="Subject" name="subject" [(ngModel)]="comment.subject"
-                   #name="ngModel">
-        </mat-form-field>
-
-        <mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Subject" name="subject" [(ngModel)]="comment.subject"
+                           #name="ngModel">
+                </mat-form-field>
+            </div>
+            <div class="middle-form">
+                <mat-form-field  class="body-form">
         <textarea matInput placeholder="Body" name="body" [(ngModel)]="comment.body"
                   #name="ngModel"></textarea>
-        </mat-form-field>
+                </mat-form-field>
+            </div>
+            <div class="botton-form">
+                <button mat-raised-button color="primary" type="submit">Submit</button>
+            </div>
+        </form>
+    </mat-card>
 
-        <button mat-raised-button color="primary" type="submit">Submit</button>
-    </form>
-</mat-card>
-
-<mat-card  class="example-card">
-    <div *ngFor="let comment of customer.comments">
-    <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{comment.user}}</mat-card-title>
-        <mat-card-subtitle>{{comment.subject}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <p>
-            {{comment.body}}
-        </p>
-    </mat-card-content>
-    </div>
-</mat-card>
+    <mat-card class="example-card">
+        <div *ngFor="let comment of customer.comments">
+            <mat-card-header>
+                <mat-card-title>{{comment.user}}</mat-card-title>
+                <mat-card-subtitle>{{comment.subject}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    {{comment.body}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                Rating: {{comment.rating}}
+            </mat-card-actions>
+        </div>
+    </mat-card>
+</div>

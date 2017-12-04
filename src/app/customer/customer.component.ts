@@ -18,7 +18,9 @@ export class CustomerComponent implements OnInit, AfterViewInit {
     comment = new Comments();
 
     ngOnInit() {
-        this.route.params.subscribe( params => {this.id = params['id']});
+        this.route.params.subscribe(params => {
+            this.id = params['id'];
+        }, );
         this.getData();
     }
 
@@ -34,9 +36,9 @@ export class CustomerComponent implements OnInit, AfterViewInit {
         return comment.id;
     }
 
-    onSubmit(): void{
+    onSubmit(): void {
 
-        this.comment.status = "N";
+        this.comment.status = 'N';
         this.comment.rating = 1;
         this.comment.consultant = this.customer.id;
         this.customerService.addComment(this.comment)
