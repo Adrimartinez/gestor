@@ -22,7 +22,7 @@ export class CustomerComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.id = params['id'];
-        },);
+        }, );
         // this.getData();
     }
 
