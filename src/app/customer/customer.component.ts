@@ -2,6 +2,7 @@ import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Comments, Customer} from "../object/customer";
 import {CustomersService} from "../customers.service";
+import {log} from "util";
 
 
 @Component({
@@ -21,19 +22,19 @@ export class CustomerComponent implements OnInit, AfterViewInit {
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.id = params['id'];
-        }, );
-       // this.getData();
+        },);
+        // this.getData();
     }
 
     ngAfterViewInit() {
         this.route.params.subscribe(params => {
             this.id = params['id'];
-        }, );
-       // this.getData();
+        },);
+        // this.getData();
     }
 
     getData() {
-        this.customerService.getCustomer(this.id).subscribe(customer => this.customer = customer);
+        this.customerService.getCustomer(this.customer.id).subscribe(customer => this.customer = customer);
     }
 
     tackComments(index: number, comment: Comments): number {
@@ -41,12 +42,12 @@ export class CustomerComponent implements OnInit, AfterViewInit {
     }
 
     onSubmit(): void {
-
         this.comment.status = 'N';
-        this.comment.rating = 1;
+        this.comment.rating = 452;
         this.comment.consultant = this.customer.id;
         this.customerService.addComment(this.comment)
             .subscribe(comment => this.customer.comments.push(comment));
+        this.getData();
     }
 
 }
