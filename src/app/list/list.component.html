@@ -1,32 +1,33 @@
-
-
-<div class="example-container mat-elevation-z8">
+<div class="example-container mat-elevation-z8 list-container">
     <mat-table #table [dataSource]="dataSource">
 
-
         <ng-container matColumnDef="image">
-            <mat-header-cell *matHeaderCellDef> Img </mat-header-cell>
-            <mat-cell *matCellDef="let customer"> <img class="table-image" src="{{customer.profile_picture}}" height="50" width="50"> </mat-cell>
+            <mat-header-cell *matHeaderCellDef> Img</mat-header-cell>
+            <mat-cell *matCellDef="let customer"><img class="table-image" src="{{customer.profile_picture}}" height="50"
+                                                      width="50"></mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-            <mat-cell *matCellDef="let customer"> {{customer.id}} </mat-cell>
+            <mat-header-cell *matHeaderCellDef> No.</mat-header-cell>
+            <mat-cell *matCellDef="let customer"> {{customer.id}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-            <mat-cell *matCellDef="let customer"> {{customer.full_name}} </mat-cell>
+            <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+            <mat-cell *matCellDef="let customer"> {{customer.full_name}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="location">
-            <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
-            <mat-cell *matCellDef="let customer"> {{customer.location}} </mat-cell>
+            <mat-header-cell *matHeaderCellDef> Location</mat-header-cell>
+            <mat-cell *matCellDef="let customer"> {{customer.location}}</mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowClick(row)"></mat-row>
     </mat-table>
+</div>
+<div class="detail-container">
+    <app-customer [customer]="customer"></app-customer>
 </div>
 
 

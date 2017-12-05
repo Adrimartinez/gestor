@@ -1,9 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+html{
+    height: 100%;
+    width: 100%;
+}
 body {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
 }
 
 header {
@@ -50,7 +56,10 @@ header {
 }
 
 .profile {
+    height: 850px;
     text-align: center;
+    overflow: scroll;
+
 }
 
 .profile-body{
@@ -59,5 +68,17 @@ header {
 
 .body-form {
     width: 50%;
+}
+
+.list-container{
+    width: 50%;
+    height: 850px;
+    float:left;
+    overflow: scroll;
+}
+
+.detail-container{
+    width: 50%;
+    float: right;
 }
 

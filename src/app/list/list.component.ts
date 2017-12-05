@@ -14,17 +14,21 @@ export class ListComponent implements OnInit {
 
     displayedColumns = ['image', 'id', 'name', 'location'];
     dataSource = new UserDataSource(this.customerService);
-    path = window.location.pathname;
+    customer: Customer;
 
     constructor(private customerService: CustomersService, private _router: Router) {
     }
 
     ngOnInit() {
+        this.getData(1);
+    }
 
+    getData(id: number) {
+        this.customerService.getCustomer(id).subscribe(customer => this.customer = customer);
     }
 
     rowClick(row) {
-        this._router.navigateByUrl(this.path + '/' + row.id);
+        this.getData(row.id);
     }
 }
 
@@ -39,4 +43,6 @@ export class UserDataSource extends DataSource<any> {
 
     disconnect() {
     }
+
+
 }

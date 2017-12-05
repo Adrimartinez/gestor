@@ -37,14 +37,16 @@ import { CustomerComponent } from './customer/customer.component';
         RouterModule.forRoot([
             {
                 path: 'list',
-                component: ListComponent
+                component: ListComponent,
+                children: [
+                    {
+                        path: ':id',
+                        component: CustomerComponent
+                    },
+                ]
             },
             {
-                path: 'list/:id',
-                component: CustomerComponent
-            },
-            {
-                path:'**',
+                path: '**',
                 redirectTo: 'list'
             }
         ]),

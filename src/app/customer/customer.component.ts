@@ -1,7 +1,8 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Comments, Customer} from "../object/customer";
 import {CustomersService} from "../customers.service";
+
 
 @Component({
     selector: 'app-customer',
@@ -13,7 +14,7 @@ export class CustomerComponent implements OnInit, AfterViewInit {
     constructor(private customerService: CustomersService, private route: ActivatedRoute) {
     }
 
-    customer: Customer;
+    @Input() customer: Customer;
     id: number;
     comment = new Comments();
 
@@ -21,11 +22,14 @@ export class CustomerComponent implements OnInit, AfterViewInit {
         this.route.params.subscribe(params => {
             this.id = params['id'];
         }, );
-        this.getData();
+       // this.getData();
     }
 
     ngAfterViewInit() {
-
+        this.route.params.subscribe(params => {
+            this.id = params['id'];
+        }, );
+       // this.getData();
     }
 
     getData() {
